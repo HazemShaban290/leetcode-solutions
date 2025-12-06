@@ -9,7 +9,6 @@ class Solution(object):
             compressed=[]
             count=0
             char=string[0]
-
             for i in range(len(string)):
                 if char == string[i]:
                     count+=1
