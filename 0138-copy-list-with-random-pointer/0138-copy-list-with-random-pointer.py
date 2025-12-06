@@ -14,27 +14,15 @@ class Solution(object):
         :rtype: Node
         """
         if not head: return None
-        index=1
-        newHead=Node(head.val)
-        node2=newHead
-        node1=head
-        hashMapOne={head:index}
-        hashMapTwo={index:newHead}
-        while  node1:
-            index+=1
-            node1=node1.next
-            if not node1:break
-            hashMapOne[node1]=index
-            newNode=Node(node1.val)
-            node2.next=newNode
-            node2=node2.next
-            hashMapTwo[index]=node2
-            
-        node1=head
-        node2=newHead
-        while node1:
-            if node1.random:
-                node2.random = hashMapTwo[hashMapOne[node1.random]]
-            node1=node1.next
-            node2=node2.next
-        return newHead
+        oldToNewHashMap={}
+        node=head
+        while node:
+            oldToNewHashMap[node]=Node(node.val)
+            node=node.next
+        node=head
+        while node:
+            oldToNewHashMap[node].next=oldToNewHashMap[node.next]
+            if node.random:
+                oldToNewHashMap[node].random=oldToNewHashMap[node.random]
+            node=node.next
+        return oldToNewHashMap[head]
