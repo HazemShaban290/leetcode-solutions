@@ -5,7 +5,6 @@ class Solution(object):
         :rtype: str
         """
         def compress(string):
-            print(string)
             compressed=[]
             count=0
             char=string[0]
