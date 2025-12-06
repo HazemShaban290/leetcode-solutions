@@ -21,8 +21,7 @@ class Solution(object):
             node=node.next
         node=head
         while node:
-            oldToNewHashMap[node].next=oldToNewHashMap[node.next]
-            if node.random:
-                oldToNewHashMap[node].random=oldToNewHashMap[node.random]
+            oldToNewHashMap[node].next=oldToNewHashMap.get(node.next)
+            oldToNewHashMap[node].random=oldToNewHashMap.get(node.random)
             node=node.next
         return oldToNewHashMap[head]
