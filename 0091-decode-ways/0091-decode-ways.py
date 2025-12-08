@@ -4,7 +4,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        
+        if len(s)==0 or s[0]=='0':return 0
         visited={}
         def numberOfWays(s,i):
         
