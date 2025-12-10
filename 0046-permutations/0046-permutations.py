@@ -6,19 +6,16 @@ class Solution(object):
         """
         permutation=[]
         results=[]
-        used=[False for _ in nums]
         def getAllPermutation():
             
-            if len(nums) ==len(permutation):
+            if len(nums) ==0:
                 results.append(permutation[:])
                 return 
             for i in range(len(nums)):
-                if used[i]:
-                    continue
-                used[i]=True
                 permutation.append(nums[i])
+                x=nums.pop(i)
                 getAllPermutation()
-                used[i]=False
+                nums.insert(i,x)
                 permutation.pop()
         getAllPermutation()
         return results
