@@ -12,4 +12,5 @@ class Solution(object):
             while i <len(lcp) and i<len(string) and string[i]==lcp[i]:
                 i+=1
             lcp=string[0:i]
+            if lcp=="":break
         return lcp
