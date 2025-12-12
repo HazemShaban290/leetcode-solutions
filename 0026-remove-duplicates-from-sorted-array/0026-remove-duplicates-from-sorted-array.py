@@ -6,7 +6,7 @@ class Solution(object):
         """
         uniqueNumbers=0
         currNum=nums[0]-1
-        for i in range(0,len(nums)):
+        for i in range(len(nums)):
             if nums[i]!=currNum:
                 nums[uniqueNumbers]=nums[i]
                 currNum=nums[i]
