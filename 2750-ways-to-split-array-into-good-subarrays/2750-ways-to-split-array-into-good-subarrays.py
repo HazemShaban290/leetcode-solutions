@@ -11,7 +11,7 @@ class Solution(object):
         for i in range(len(nums)):
             if nums[i]==1:
                 if zeroCount!=0:
-                    ways*=(zeroCount+1)%((10**9)+7)
+                    ways=(ways*(zeroCount+1))%((10**9)+7)
                 zeroCount=0
                 firstOneFound=True
             else:
