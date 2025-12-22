@@ -4,8 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        if sum(nums)==0:
-            return 0
+        
         zeroCount=0
         ways=1
         firstOneFound=False
@@ -18,4 +17,6 @@ class Solution(object):
             else:
                 if firstOneFound:
                     zeroCount+=1
+        if not firstOneFound:
+            return 0
         return ways %((10**9)+7)
