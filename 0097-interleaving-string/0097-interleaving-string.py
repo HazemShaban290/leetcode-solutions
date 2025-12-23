@@ -7,8 +7,9 @@ class Solution(object):
         :rtype: bool
         """
         visited={}
-        def traverse(i,j,k):
-            if (i,j,k) in visited:return visited[(i,j,k)]
+        def traverse(i,j):
+            if (i,j) in visited:return visited[(i,j)]
+            k=i+j
             if k==len(s3) and (i !=len(s1) or j!=len(s2)):
                 return False
             elif k==len(s3) and i ==len(s1) and j==len(s2):
@@ -16,9 +17,9 @@ class Solution(object):
             option1=False
             option2=False
             if j<len(s2) and s2[j]==s3[k]:
-                option1=traverse(i,j+1,k+1)
+                option1=traverse(i,j+1)
             if i<len(s1) and s1[i]==s3[k]:
-                option2=traverse(i+1,j,k+1)
-            visited[(i,j,k)]=option1 or option2 
-            return visited[(i,j,k)]
-        return traverse(0,0,0)
+                option2=traverse(i+1,j)
+            visited[(i,j)]=option1 or option2 
+            return visited[(i,j)]
+        return traverse(0,0)
