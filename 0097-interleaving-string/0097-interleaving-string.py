@@ -12,7 +12,7 @@ class Solution(object):
             k=i+j
             if k==len(s3) and (i !=len(s1) or j!=len(s2)):
                 return False
-            elif k==len(s3) and i ==len(s1) and j==len(s2):
+            if k==len(s3) and i ==len(s1) and j==len(s2):
                 return True
             option1=False
             option2=False
