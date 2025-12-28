@@ -13,7 +13,6 @@ class Solution:
         if not root:return 0
         while q:
             node,level=q.popleft()
-            print(q)
             if node.left :
                 q.append((node.left,level+1))
             if node.right :
