@@ -1,10 +1,15 @@
+import heapq
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
-        uglyNumbers=set([1])
+        minHeap=[]
+        heapq.heappush(minHeap,1)
+        seenNumbers=set([1])
+        primes=[2,3,5]
         for _ in range(n):
-            currentUgly=min(uglyNumbers)
-            uglyNumbers.remove(currentUgly) 
-            uglyNumbers.add(currentUgly*2) 
-            uglyNumbers.add(currentUgly*3) 
-            uglyNumbers.add(currentUgly*5)
+            currentUgly=heapq.heappop(minHeap)
+            for prime in primes:
+                nextUgly=prime*currentUgly
+                if nextUgly not in seenNumbers:
+                    heapq.heappush(minHeap,nextUgly)
+                    seenNumbers.add(nextUgly)
         return currentUgly
