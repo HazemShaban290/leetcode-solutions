@@ -1,14 +1,19 @@
 class Solution:
     def minOperations(self, boxes: str) -> List[int]:
-        ballBoxes=set()
-
-        res=[]
+        res=[0]*len(boxes)
+        count=0
+        ops=0
         for i in range(len(boxes)):
+            res[i]+=ops
             if boxes[i]=='1':
-                ballBoxes.add(i)
-        for i in range(len(boxes)):
-            operations=0
-            for ballIdx in ballBoxes:
-                operations+=abs(i-ballIdx)
-            res.append(operations)
+                count+=1
+            ops+=count
+        count=0
+        ops=0
+        for i in reversed(range(len(boxes))):
+            res[i]+=ops
+            if boxes[i]=='1':
+                count+=1
+            ops+=count
         return res
+        
