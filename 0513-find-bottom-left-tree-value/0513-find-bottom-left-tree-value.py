@@ -7,15 +7,15 @@
 class Solution:
     def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
         mostLeftNode=[root.val,0]
-        def getLeftMost(node,isLeft,depth):
+        def getLeftMost(node,depth):
  
             if not node.left:
                 if depth>mostLeftNode[1]:
                     mostLeftNode[0]=node.val
                     mostLeftNode[1]=depth
             if node.left:
-                getLeftMost(node.left,True,depth+1)
+                getLeftMost(node.left,depth+1)
             if node.right:
-                getLeftMost(node.right,False,depth+1)
-        getLeftMost(root,True,0)
+                getLeftMost(node.right,depth+1)
+        getLeftMost(root,0)
         return mostLeftNode[0]
