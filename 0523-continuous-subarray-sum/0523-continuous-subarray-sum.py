@@ -11,3 +11,8 @@ class Solution:
             else:
                 hashMap[remainder]=i
         return False
+    
+# prefix Sum for index i is sum from 0 -> i
+# if j>i and (prefix[j] - prefix[i])%k ==0 that means the sum of numbers from i+1 to j is multiple of k
+# prefix[j]%k == prefix[i]%k   then the sum of numbers from i+1 to j is multiple of k
+# if the remainder appears twice that means the sum of numbers from i+1 to j is multiple of k
