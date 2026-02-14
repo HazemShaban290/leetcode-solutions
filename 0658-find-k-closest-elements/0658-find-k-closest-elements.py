@@ -15,7 +15,6 @@ class Solution:
                 right=mid-1
         left=min(left,right)
         right=left+1
-        print(left)
         while k>0:
             if left>=0 and right<len(arr):
                 if abs(arr[left]-x) <= abs(arr[right]-x) :
