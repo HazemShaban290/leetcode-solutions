@@ -10,8 +10,8 @@ class Solution:
         res=set()
         for word in words:
             for word2 in words:
-                if word!=word2 and len(word)>=len(word2):
-                    if isSubString(word,word2):
-                        res.add(word2)
+                if word!=word2 and word in word2:
+                    
+                    res.add(word)
         return list(res)
         
