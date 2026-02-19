@@ -1,21 +1,18 @@
 class Solution:
     def triangleNumber(self, nums: List[int]) -> int:
-        res=0
         nums.sort()
-        n=len(nums)
-        for i in range(n-2):
-            for j in range(i+1,n-1):
-                x= nums[i]+nums[j]
-                left=j+1
-                right=n
-
-                while left<right:
-                    mid=(left+right)//2
-                    if nums[mid]<x:
-                        left=mid+1
-                    elif nums[mid]>=x:
-                        right=mid
-
-                res+=left-1-j
-        return res
+        n = len(nums)
+        res = 0
+        
+        for k in range(n-1, 1, -1):
+            i = 0
+            j = k - 1
             
+            while i < j:
+                if nums[i] + nums[j] > nums[k]:
+                    res += j - i
+                    j -= 1
+                else:
+                    i += 1
+                    
+        return res
