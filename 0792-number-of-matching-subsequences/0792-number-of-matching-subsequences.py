@@ -9,8 +9,7 @@ class Solution:
             if ch in waiting:
                 waitingList=waiting[ch]
                 waiting[ch]=[]
-                while waitingList:
-                    word=waitingList.pop()
+                for word in waitingList:
                     if len(word)==1:
                         count+=1
                     else:
