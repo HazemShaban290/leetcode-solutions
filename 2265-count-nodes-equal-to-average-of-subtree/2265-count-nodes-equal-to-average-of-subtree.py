@@ -6,17 +6,16 @@
 #         self.right = right
 class Solution:
     def averageOfSubtree(self, root: TreeNode) -> int:
-        res=[0]
-        def countNode(node):
-            if not node: return 0 ,0
-            leftSum,leftcount=countNode(node.left)
-            rightSum,rightcount=countNode(node.right)
-            totalSum=leftSum+rightSum+node.val
-            totalCount=leftcount+rightcount+1
-            avr=totalSum//totalCount
-   
-            if avr == node.val:
-                res[0]+=1
-            return totalSum,totalCount
-        countNode(root)
-        return res[0]
+        count=[0]
+
+        def getAvrNodesCount(node):
+            if node is None:
+                return 0,0
+            leftSum,leftCount=getAvrNodesCount(node.left)
+            rightSum,rightCount=getAvrNodesCount(node.right)
+            avr=(node.val+leftSum+rightSum)//(leftCount+rightCount+1)
+            if avr==node.val:
+                count[0]+=1
+            return node.val+leftSum+rightSum,leftCount+rightCount+1
+        getAvrNodesCount(root)
+        return count[0]
